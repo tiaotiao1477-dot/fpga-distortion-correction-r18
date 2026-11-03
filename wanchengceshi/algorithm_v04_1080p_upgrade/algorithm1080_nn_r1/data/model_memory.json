@@ -1,0 +1,15 @@
+{
+  "weightsBase": 50331648,
+  "weightsBytes": 601616,
+  "paddedBytes": 601632,
+  "weightsCrc32": 1290155229,
+  "weightsSha256": "3734019eb869f679bae6c9f2433056b26d5bbaef25cdb72da58f69b70333d322",
+  "paddedSha256": "53b5a2e6284b90c7b92e635cf0089e075ec0daab897ef3d247ce0ea190403b1c",
+  "a0Base": 51380224,
+  "a0Bytes": 65536,
+  "a1Base": 52428800,
+  "a1Bytes": 262144,
+  "regionBase": 50331648,
+  "regionLimit": 54525952,
+  "videoPoolEnd": 49766400
+}

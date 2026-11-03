@@ -1,0 +1,19 @@
+{
+  "model": "radial_tangential_k1_k2_p1_p2",
+  "width": 1920,
+  "height": 1080,
+  "fx": 1592.7057509695878,
+  "fy": 1598.6203664027087,
+  "cx": 926.1887127710241,
+  "cy": 501.16241892870374,
+  "k1": -0.3854208766968921,
+  "k2": 0.19186905019503758,
+  "p1": 0.001891435942218451,
+  "p2": -0.0006524720880533516,
+  "samplingRelationConfirmed": true,
+  "passedForHardware": false,
+  "qualification": "Normalized runtime schema, measured USB sampling mapping; board correction pending",
+  "sourceDerivation": "D:\\FPAG_qiansai\\data\\calibration\\ov5640_user_photos_20261022\\board_validation_20261023\\measured_native_profile\\derivation.json",
+  "sourceDerivationSha256": "5902d60f14641700d76db6ed2e3e993f80623660e8e19414f6eaa10ee0757863",
+  "sourceMeasuredProfileSha256": "2c62d7d4dee33a75c7654b72fa983a659683cc84ad0ed2f5b14bae1e607db1f8"
+}

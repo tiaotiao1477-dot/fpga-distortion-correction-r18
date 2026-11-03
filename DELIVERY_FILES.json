@@ -1,0 +1,52 @@
+{
+  "project": "R18 timing",
+  "device": "PG2L200H-6FBB676",
+  "tool": "Pango Design Suite / Fabric Compiler 2025.2 build 211867",
+  "sourceManifestSha256": "4f3e3fd7dc884586b3fb7149d569e9c3d85564b0c8bce35ff90ea7eb5197fa3d",
+  "livePdsInputsMatchedSourceSnapshot": 108,
+  "bitstreamGenerationTime": "2026-11-02 22:25:09 Asia/Shanghai",
+  "programLogRecord": {
+    "time": "2026-11-03 19:42:36 Asia/Shanghai",
+    "result": "Program execute successfully; DONE=1",
+    "file": "video1080_stream_top.sbit"
+  },
+  "timingReportSummary": "All Constraints Met",
+  "files": [
+    {
+      "path": "programming/video1080_stream_top.sbit",
+      "bytes": 9188552,
+      "sha256": "273827705879a02a629d5665b25584e3e8a274a19024eb37fc15a3685f71895b",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/generate_bitstream/video1080_stream_top.sbit"
+    },
+    {
+      "path": "programming/video1080_stream_top.smsk",
+      "bytes": 9188552,
+      "sha256": "8591f9d5f02eb0fd8f2ba65982d3d5a087f584d35db1576680bee33faf93fb0d",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/generate_bitstream/video1080_stream_top.smsk"
+    },
+    {
+      "path": "programming/video1080_stream_top.bgr",
+      "bytes": 2416,
+      "sha256": "f364c4aa8d7c09e2984fad6578d39302a7fec5650553e7021758d6ba89118eea",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/generate_bitstream/video1080_stream_top.bgr"
+    },
+    {
+      "path": "implementation_reports/video1080_stream_top.rtr",
+      "bytes": 1938385,
+      "sha256": "1ced6dd285243c9a441f2bca57d59f6cb8813a3e8922c73ede4878d16c448498",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/report_timing/video1080_stream_top.rtr"
+    },
+    {
+      "path": "implementation_reports/video1080_stream_top_exception.rtr",
+      "bytes": 3260705,
+      "sha256": "506daaaf64da2d2c993827f97394127188223a18f42256e51c10863e46eb6c34",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/report_timing/video1080_stream_top_exception.rtr"
+    },
+    {
+      "path": "implementation_reports/video1080_stream_top.rur",
+      "bytes": 154902,
+      "sha256": "4d734d7c264ccf05cc18369feb895ad72930c2350bc2254822aeb89fde0ececb",
+      "source": "wanchengceshi/algorithm_v04_1080p_upgrade/algorithm1080_nn_r1/build_revision18_timing/prj_tasks/pnr_1/place_route/video1080_stream_top.rur"
+    }
+  ]
+}

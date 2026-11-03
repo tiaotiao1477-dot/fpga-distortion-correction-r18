@@ -1,0 +1,292 @@
+`timescale 1ns / 1ps
+// Register values copied from the local official OV5640 720P30 RGB565 reference.
+// The reference has no entries for indexes 3..101; those holes are skipped.
+module ov5640_reg_table(
+    input  wire [8:0]  index,
+    output reg  [23:0] reg_data,
+    output reg         reg_valid
+);
+    always @* begin
+        reg_data = 24'h000000;
+        reg_valid = 1'b0;
+        case (index)
+            0: begin reg_data = 24'h310311; reg_valid = 1'b1; end
+            1: begin reg_data = 24'h300882; reg_valid = 1'b1; end
+            // Make the DVP pixel-clock output explicit after software reset.
+            // 0x3007[2] enables the OV5640 DVP PCLK clock.
+            2: begin reg_data = 24'h3007FF; reg_valid = 1'b1; end
+            102: begin reg_data = 24'h300842; reg_valid = 1'b1; end
+            103: begin reg_data = 24'h310303; reg_valid = 1'b1; end
+            104: begin reg_data = 24'h3017FF; reg_valid = 1'b1; end
+            105: begin reg_data = 24'h3018FF; reg_valid = 1'b1; end
+            106: begin reg_data = 24'h30341A; reg_valid = 1'b1; end
+            107: begin reg_data = 24'h303713; reg_valid = 1'b1; end
+            108: begin reg_data = 24'h310801; reg_valid = 1'b1; end
+            109: begin reg_data = 24'h363036; reg_valid = 1'b1; end
+            110: begin reg_data = 24'h36310E; reg_valid = 1'b1; end
+            111: begin reg_data = 24'h3632E2; reg_valid = 1'b1; end
+            112: begin reg_data = 24'h363312; reg_valid = 1'b1; end
+            113: begin reg_data = 24'h3621E0; reg_valid = 1'b1; end
+            114: begin reg_data = 24'h3704A0; reg_valid = 1'b1; end
+            115: begin reg_data = 24'h37035A; reg_valid = 1'b1; end
+            116: begin reg_data = 24'h371578; reg_valid = 1'b1; end
+            117: begin reg_data = 24'h371701; reg_valid = 1'b1; end
+            118: begin reg_data = 24'h370B60; reg_valid = 1'b1; end
+            119: begin reg_data = 24'h37051A; reg_valid = 1'b1; end
+            120: begin reg_data = 24'h390502; reg_valid = 1'b1; end
+            121: begin reg_data = 24'h390610; reg_valid = 1'b1; end
+            122: begin reg_data = 24'h39010A; reg_valid = 1'b1; end
+            123: begin reg_data = 24'h373112; reg_valid = 1'b1; end
+            124: begin reg_data = 24'h360008; reg_valid = 1'b1; end
+            125: begin reg_data = 24'h360133; reg_valid = 1'b1; end
+            126: begin reg_data = 24'h302D60; reg_valid = 1'b1; end
+            127: begin reg_data = 24'h362052; reg_valid = 1'b1; end
+            128: begin reg_data = 24'h371B20; reg_valid = 1'b1; end
+            129: begin reg_data = 24'h471C50; reg_valid = 1'b1; end
+            130: begin reg_data = 24'h3A1343; reg_valid = 1'b1; end
+            131: begin reg_data = 24'h3A1800; reg_valid = 1'b1; end
+            132: begin reg_data = 24'h3A19F8; reg_valid = 1'b1; end
+            133: begin reg_data = 24'h363513; reg_valid = 1'b1; end
+            134: begin reg_data = 24'h363603; reg_valid = 1'b1; end
+            135: begin reg_data = 24'h363440; reg_valid = 1'b1; end
+            136: begin reg_data = 24'h362201; reg_valid = 1'b1; end
+            137: begin reg_data = 24'h3C0134; reg_valid = 1'b1; end
+            138: begin reg_data = 24'h3C0428; reg_valid = 1'b1; end
+            139: begin reg_data = 24'h3C0598; reg_valid = 1'b1; end
+            140: begin reg_data = 24'h3C0600; reg_valid = 1'b1; end
+            141: begin reg_data = 24'h3C0708; reg_valid = 1'b1; end
+            142: begin reg_data = 24'h3C0800; reg_valid = 1'b1; end
+            143: begin reg_data = 24'h3C091C; reg_valid = 1'b1; end
+            144: begin reg_data = 24'h3C0A9C; reg_valid = 1'b1; end
+            145: begin reg_data = 24'h3C0B40; reg_valid = 1'b1; end
+            146: begin reg_data = 24'h381000; reg_valid = 1'b1; end
+            147: begin reg_data = 24'h381110; reg_valid = 1'b1; end
+            148: begin reg_data = 24'h381200; reg_valid = 1'b1; end
+            149: begin reg_data = 24'h370864; reg_valid = 1'b1; end
+            150: begin reg_data = 24'h400102; reg_valid = 1'b1; end
+            151: begin reg_data = 24'h40051A; reg_valid = 1'b1; end
+            152: begin reg_data = 24'h300000; reg_valid = 1'b1; end
+            153: begin reg_data = 24'h3004FF; reg_valid = 1'b1; end
+            154: begin reg_data = 24'h300E58; reg_valid = 1'b1; end
+            155: begin reg_data = 24'h302E00; reg_valid = 1'b1; end
+            156: begin reg_data = 24'h430061; reg_valid = 1'b1; end
+            157: begin reg_data = 24'h501F01; reg_valid = 1'b1; end
+            158: begin reg_data = 24'h440E00; reg_valid = 1'b1; end
+            // Enable lens-shading correction for the color-shading A/B test.
+            // Keep all other ISP control bits and LSC coefficients unchanged.
+            159: begin reg_data = 24'h5000A7; reg_valid = 1'b1; end
+            160: begin reg_data = 24'h3A0F30; reg_valid = 1'b1; end
+            161: begin reg_data = 24'h3A1028; reg_valid = 1'b1; end
+            162: begin reg_data = 24'h3A1B30; reg_valid = 1'b1; end
+            163: begin reg_data = 24'h3A1E26; reg_valid = 1'b1; end
+            164: begin reg_data = 24'h3A1160; reg_valid = 1'b1; end
+            165: begin reg_data = 24'h3A1F14; reg_valid = 1'b1; end
+            166: begin reg_data = 24'h580023; reg_valid = 1'b1; end
+            167: begin reg_data = 24'h580114; reg_valid = 1'b1; end
+            168: begin reg_data = 24'h58020F; reg_valid = 1'b1; end
+            169: begin reg_data = 24'h58030F; reg_valid = 1'b1; end
+            170: begin reg_data = 24'h580412; reg_valid = 1'b1; end
+            171: begin reg_data = 24'h580526; reg_valid = 1'b1; end
+            172: begin reg_data = 24'h58060C; reg_valid = 1'b1; end
+            173: begin reg_data = 24'h580708; reg_valid = 1'b1; end
+            174: begin reg_data = 24'h580805; reg_valid = 1'b1; end
+            175: begin reg_data = 24'h580905; reg_valid = 1'b1; end
+            176: begin reg_data = 24'h580A08; reg_valid = 1'b1; end
+            177: begin reg_data = 24'h580B0D; reg_valid = 1'b1; end
+            178: begin reg_data = 24'h580C08; reg_valid = 1'b1; end
+            179: begin reg_data = 24'h580D03; reg_valid = 1'b1; end
+            180: begin reg_data = 24'h580E00; reg_valid = 1'b1; end
+            181: begin reg_data = 24'h580F00; reg_valid = 1'b1; end
+            182: begin reg_data = 24'h581003; reg_valid = 1'b1; end
+            183: begin reg_data = 24'h581109; reg_valid = 1'b1; end
+            184: begin reg_data = 24'h581207; reg_valid = 1'b1; end
+            185: begin reg_data = 24'h581303; reg_valid = 1'b1; end
+            186: begin reg_data = 24'h581400; reg_valid = 1'b1; end
+            187: begin reg_data = 24'h581501; reg_valid = 1'b1; end
+            188: begin reg_data = 24'h581603; reg_valid = 1'b1; end
+            189: begin reg_data = 24'h581708; reg_valid = 1'b1; end
+            190: begin reg_data = 24'h58180D; reg_valid = 1'b1; end
+            191: begin reg_data = 24'h581908; reg_valid = 1'b1; end
+            192: begin reg_data = 24'h581A05; reg_valid = 1'b1; end
+            193: begin reg_data = 24'h581B06; reg_valid = 1'b1; end
+            194: begin reg_data = 24'h581C08; reg_valid = 1'b1; end
+            195: begin reg_data = 24'h581D0E; reg_valid = 1'b1; end
+            196: begin reg_data = 24'h581E29; reg_valid = 1'b1; end
+            197: begin reg_data = 24'h581F17; reg_valid = 1'b1; end
+            198: begin reg_data = 24'h582011; reg_valid = 1'b1; end
+            199: begin reg_data = 24'h582111; reg_valid = 1'b1; end
+            200: begin reg_data = 24'h582215; reg_valid = 1'b1; end
+            201: begin reg_data = 24'h582328; reg_valid = 1'b1; end
+            202: begin reg_data = 24'h582446; reg_valid = 1'b1; end
+            203: begin reg_data = 24'h582526; reg_valid = 1'b1; end
+            204: begin reg_data = 24'h582608; reg_valid = 1'b1; end
+            205: begin reg_data = 24'h582726; reg_valid = 1'b1; end
+            206: begin reg_data = 24'h582864; reg_valid = 1'b1; end
+            207: begin reg_data = 24'h582926; reg_valid = 1'b1; end
+            208: begin reg_data = 24'h582A24; reg_valid = 1'b1; end
+            209: begin reg_data = 24'h582B22; reg_valid = 1'b1; end
+            210: begin reg_data = 24'h582C24; reg_valid = 1'b1; end
+            211: begin reg_data = 24'h582D24; reg_valid = 1'b1; end
+            212: begin reg_data = 24'h582E06; reg_valid = 1'b1; end
+            213: begin reg_data = 24'h582F22; reg_valid = 1'b1; end
+            214: begin reg_data = 24'h583040; reg_valid = 1'b1; end
+            215: begin reg_data = 24'h583142; reg_valid = 1'b1; end
+            216: begin reg_data = 24'h583224; reg_valid = 1'b1; end
+            217: begin reg_data = 24'h583326; reg_valid = 1'b1; end
+            218: begin reg_data = 24'h583424; reg_valid = 1'b1; end
+            219: begin reg_data = 24'h583522; reg_valid = 1'b1; end
+            220: begin reg_data = 24'h583622; reg_valid = 1'b1; end
+            221: begin reg_data = 24'h583726; reg_valid = 1'b1; end
+            222: begin reg_data = 24'h583844; reg_valid = 1'b1; end
+            223: begin reg_data = 24'h583924; reg_valid = 1'b1; end
+            224: begin reg_data = 24'h583A26; reg_valid = 1'b1; end
+            225: begin reg_data = 24'h583B28; reg_valid = 1'b1; end
+            226: begin reg_data = 24'h583C42; reg_valid = 1'b1; end
+            227: begin reg_data = 24'h583DCE; reg_valid = 1'b1; end
+            228: begin reg_data = 24'h5180FF; reg_valid = 1'b1; end
+            229: begin reg_data = 24'h5181F2; reg_valid = 1'b1; end
+            230: begin reg_data = 24'h518200; reg_valid = 1'b1; end
+            231: begin reg_data = 24'h518314; reg_valid = 1'b1; end
+            232: begin reg_data = 24'h518425; reg_valid = 1'b1; end
+            233: begin reg_data = 24'h518524; reg_valid = 1'b1; end
+            234: begin reg_data = 24'h518609; reg_valid = 1'b1; end
+            235: begin reg_data = 24'h518709; reg_valid = 1'b1; end
+            236: begin reg_data = 24'h518809; reg_valid = 1'b1; end
+            237: begin reg_data = 24'h518975; reg_valid = 1'b1; end
+            238: begin reg_data = 24'h518A54; reg_valid = 1'b1; end
+            239: begin reg_data = 24'h518BE0; reg_valid = 1'b1; end
+            240: begin reg_data = 24'h518CB2; reg_valid = 1'b1; end
+            241: begin reg_data = 24'h518D42; reg_valid = 1'b1; end
+            242: begin reg_data = 24'h518E3D; reg_valid = 1'b1; end
+            243: begin reg_data = 24'h518F56; reg_valid = 1'b1; end
+            244: begin reg_data = 24'h519046; reg_valid = 1'b1; end
+            245: begin reg_data = 24'h5191F8; reg_valid = 1'b1; end
+            246: begin reg_data = 24'h519204; reg_valid = 1'b1; end
+            247: begin reg_data = 24'h519370; reg_valid = 1'b1; end
+            248: begin reg_data = 24'h5194F0; reg_valid = 1'b1; end
+            249: begin reg_data = 24'h5195F0; reg_valid = 1'b1; end
+            250: begin reg_data = 24'h519603; reg_valid = 1'b1; end
+            251: begin reg_data = 24'h519701; reg_valid = 1'b1; end
+            252: begin reg_data = 24'h519804; reg_valid = 1'b1; end
+            253: begin reg_data = 24'h519912; reg_valid = 1'b1; end
+            254: begin reg_data = 24'h519A04; reg_valid = 1'b1; end
+            255: begin reg_data = 24'h519B00; reg_valid = 1'b1; end
+            256: begin reg_data = 24'h519C06; reg_valid = 1'b1; end
+            257: begin reg_data = 24'h519D82; reg_valid = 1'b1; end
+            258: begin reg_data = 24'h519E38; reg_valid = 1'b1; end
+            259: begin reg_data = 24'h548001; reg_valid = 1'b1; end
+            260: begin reg_data = 24'h548108; reg_valid = 1'b1; end
+            261: begin reg_data = 24'h548214; reg_valid = 1'b1; end
+            262: begin reg_data = 24'h548328; reg_valid = 1'b1; end
+            263: begin reg_data = 24'h548451; reg_valid = 1'b1; end
+            264: begin reg_data = 24'h548565; reg_valid = 1'b1; end
+            265: begin reg_data = 24'h548671; reg_valid = 1'b1; end
+            266: begin reg_data = 24'h54877D; reg_valid = 1'b1; end
+            267: begin reg_data = 24'h548887; reg_valid = 1'b1; end
+            268: begin reg_data = 24'h548991; reg_valid = 1'b1; end
+            269: begin reg_data = 24'h548A9A; reg_valid = 1'b1; end
+            270: begin reg_data = 24'h548BAA; reg_valid = 1'b1; end
+            271: begin reg_data = 24'h548CB8; reg_valid = 1'b1; end
+            272: begin reg_data = 24'h548DCD; reg_valid = 1'b1; end
+            273: begin reg_data = 24'h548EDD; reg_valid = 1'b1; end
+            274: begin reg_data = 24'h548FEA; reg_valid = 1'b1; end
+            275: begin reg_data = 24'h54901D; reg_valid = 1'b1; end
+            276: begin reg_data = 24'h53811E; reg_valid = 1'b1; end
+            277: begin reg_data = 24'h53825B; reg_valid = 1'b1; end
+            278: begin reg_data = 24'h538308; reg_valid = 1'b1; end
+            279: begin reg_data = 24'h53840A; reg_valid = 1'b1; end
+            280: begin reg_data = 24'h53857E; reg_valid = 1'b1; end
+            281: begin reg_data = 24'h538688; reg_valid = 1'b1; end
+            282: begin reg_data = 24'h53877C; reg_valid = 1'b1; end
+            283: begin reg_data = 24'h53886C; reg_valid = 1'b1; end
+            284: begin reg_data = 24'h538910; reg_valid = 1'b1; end
+            285: begin reg_data = 24'h538A01; reg_valid = 1'b1; end
+            286: begin reg_data = 24'h538B98; reg_valid = 1'b1; end
+            287: begin reg_data = 24'h558006; reg_valid = 1'b1; end
+            288: begin reg_data = 24'h558340; reg_valid = 1'b1; end
+            289: begin reg_data = 24'h558410; reg_valid = 1'b1; end
+            290: begin reg_data = 24'h558910; reg_valid = 1'b1; end
+            291: begin reg_data = 24'h558A00; reg_valid = 1'b1; end
+            292: begin reg_data = 24'h558BF8; reg_valid = 1'b1; end
+            293: begin reg_data = 24'h501D40; reg_valid = 1'b1; end
+            294: begin reg_data = 24'h530008; reg_valid = 1'b1; end
+            295: begin reg_data = 24'h530130; reg_valid = 1'b1; end
+            296: begin reg_data = 24'h530210; reg_valid = 1'b1; end
+            297: begin reg_data = 24'h530300; reg_valid = 1'b1; end
+            298: begin reg_data = 24'h530408; reg_valid = 1'b1; end
+            299: begin reg_data = 24'h530530; reg_valid = 1'b1; end
+            300: begin reg_data = 24'h530608; reg_valid = 1'b1; end
+            301: begin reg_data = 24'h530716; reg_valid = 1'b1; end
+            302: begin reg_data = 24'h530908; reg_valid = 1'b1; end
+            303: begin reg_data = 24'h530A30; reg_valid = 1'b1; end
+            304: begin reg_data = 24'h530B04; reg_valid = 1'b1; end
+            305: begin reg_data = 24'h530C06; reg_valid = 1'b1; end
+            306: begin reg_data = 24'h502500; reg_valid = 1'b1; end
+            // Keep the sensor in software power-down through all remaining
+            // format/timing writes. Index 307 is intentionally left invalid;
+            // streaming is enabled only by the final 0x3008=0x02 write.
+            // Experimental 720p30 point: reduce the OV5640 DVP PCLK to ~72 MHz
+            // and shorten HTS from 1892 to 1622 to retain ~30 frames/s.
+            // Limit auto exposure to one 0x02E4-line frame to retain 30 fps in low light.
+            308: begin reg_data = 24'h303521; reg_valid = 1'b1; end
+            309: begin reg_data = 24'h30365A; reg_valid = 1'b1; end
+            310: begin reg_data = 24'h3C0708; reg_valid = 1'b1; end
+            311: begin reg_data = 24'h382047; reg_valid = 1'b1; end
+            312: begin reg_data = 24'h382100; reg_valid = 1'b1; end
+            313: begin reg_data = 24'h381431; reg_valid = 1'b1; end
+            314: begin reg_data = 24'h381531; reg_valid = 1'b1; end
+            315: begin reg_data = 24'h380000; reg_valid = 1'b1; end
+            316: begin reg_data = 24'h380100; reg_valid = 1'b1; end
+            317: begin reg_data = 24'h380200; reg_valid = 1'b1; end
+            318: begin reg_data = 24'h3803FA; reg_valid = 1'b1; end
+            319: begin reg_data = 24'h38040A; reg_valid = 1'b1; end
+            320: begin reg_data = 24'h38053F; reg_valid = 1'b1; end
+            321: begin reg_data = 24'h380606; reg_valid = 1'b1; end
+            322: begin reg_data = 24'h3807A9; reg_valid = 1'b1; end
+            323: begin reg_data = 24'h380805; reg_valid = 1'b1; end
+            324: begin reg_data = 24'h380900; reg_valid = 1'b1; end
+            325: begin reg_data = 24'h380A02; reg_valid = 1'b1; end
+            326: begin reg_data = 24'h380BD0; reg_valid = 1'b1; end
+            327: begin reg_data = 24'h380C06; reg_valid = 1'b1; end
+            328: begin reg_data = 24'h380D56; reg_valid = 1'b1; end
+            329: begin reg_data = 24'h380E02; reg_valid = 1'b1; end
+            330: begin reg_data = 24'h380FE4; reg_valid = 1'b1; end
+            331: begin reg_data = 24'h381304; reg_valid = 1'b1; end
+            332: begin reg_data = 24'h361800; reg_valid = 1'b1; end
+            333: begin reg_data = 24'h361229; reg_valid = 1'b1; end
+            334: begin reg_data = 24'h370952; reg_valid = 1'b1; end
+            335: begin reg_data = 24'h370C03; reg_valid = 1'b1; end
+            336: begin reg_data = 24'h3A0202; reg_valid = 1'b1; end
+            337: begin reg_data = 24'h3A03E0; reg_valid = 1'b1; end
+            338: begin reg_data = 24'h3A0800; reg_valid = 1'b1; end
+            339: begin reg_data = 24'h3A096F; reg_valid = 1'b1; end
+            340: begin reg_data = 24'h3A0A00; reg_valid = 1'b1; end
+            341: begin reg_data = 24'h3A0B5C; reg_valid = 1'b1; end
+            342: begin reg_data = 24'h3A0E06; reg_valid = 1'b1; end
+            343: begin reg_data = 24'h3A0D08; reg_valid = 1'b1; end
+            344: begin reg_data = 24'h3A1402; reg_valid = 1'b1; end
+            345: begin reg_data = 24'h3A15E0; reg_valid = 1'b1; end
+            346: begin reg_data = 24'h400402; reg_valid = 1'b1; end
+            347: begin reg_data = 24'h30021C; reg_valid = 1'b1; end
+            348: begin reg_data = 24'h3006C3; reg_valid = 1'b1; end
+            349: begin reg_data = 24'h471303; reg_valid = 1'b1; end
+            350: begin reg_data = 24'h440704; reg_valid = 1'b1; end
+            351: begin reg_data = 24'h460B37; reg_valid = 1'b1; end
+            352: begin reg_data = 24'h460C20; reg_valid = 1'b1; end
+            353: begin reg_data = 24'h483716; reg_valid = 1'b1; end
+            354: begin reg_data = 24'h382404; reg_valid = 1'b1; end
+            355: begin reg_data = 24'h500183; reg_valid = 1'b1; end
+            356: begin reg_data = 24'h350300; reg_valid = 1'b1; end
+            // The OV5640 module app note defines 0x4740=0x22 as falling-edge
+            // DVP data updates, low-active HREF, and low-active VSYNC.
+            // Disable the OV5640 color-bar test pattern.
+            357: begin reg_data = 24'h474022; reg_valid = 1'b1; end
+            358: begin reg_data = 24'h503D00; reg_valid = 1'b1; end
+            // Start streaming only after the complete table is committed.
+            359: begin reg_data = 24'h300802; reg_valid = 1'b1; end
+            default: begin reg_data = 24'h000000; reg_valid = 1'b0; end
+        endcase
+    end
+endmodule
+
+
